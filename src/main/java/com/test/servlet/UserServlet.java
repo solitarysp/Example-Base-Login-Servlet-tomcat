@@ -44,11 +44,6 @@ public class UserServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			request.logout();
-		} catch (ServletException ex) {
-			throw new IOException(ex);
-		}
 		response.getWriter().write("Hello user");
 	}
 
