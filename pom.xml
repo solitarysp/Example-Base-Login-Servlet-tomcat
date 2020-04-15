@@ -10,8 +10,6 @@
   
   <properties>
   <servlet.version>3.1.0</servlet.version>
-  <maven.compiler.plugin.version>3.5.1</maven.compiler.plugin.version>
-  
   </properties>
   
   <dependencies>
@@ -21,19 +19,41 @@
       <version>${servlet.version}</version>
     </dependency>
   </dependencies>
-  
-  
+
   <build>
-    <finalName>ServletSample</finalName>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.tomcat.maven</groupId>
+          <artifactId>tomcat7-maven-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.5.1</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <configuration>
+          <port>8080</port>
+          <path>/</path>
+          <tomcatUsers>src/main/webapp/config/tomcat-users.xml</tomcatUsers>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven.compiler.plugin.version}</version>
         <configuration>
-          <!-- Java version-->
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.8</source>
+          <target>1.8</target>
+          <showDeprecation>true</showDeprecation>
+          <showWarnings>true</showWarnings>
+          <fork>true</fork>
         </configuration>
       </plugin>
     </plugins>
