@@ -33,17 +33,6 @@ import java.io.IOException;
 public class AdminServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public AdminServlet() {
-		System.out.println("FirstServlet Constructor called!");
-	}
-
-	public void init(ServletConfig config) throws ServletException {
-	}
-
-	public void destroy() {
-		System.out.println("FirstServlet \"Destroy\" method called");
-	}
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().write("Hello Admin");
 	}
